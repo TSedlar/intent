@@ -38,7 +38,7 @@ class IntentPlugin(private val activity: Activity) : MethodCallHandler {
                                 val tmp = it.value as ArrayList<*>
                                 intent.putExtra(it.key, tmp.toArray(arrayOfNulls<String>(tmp.size)))
                             }
-                            Intent.EXTRA_STREAM -> intent.putExtra(it.key, Uri.parse(it.value))
+                            Intent.EXTRA_STREAM -> intent.putExtra(it.key, it.value as Uri)
                             Intent.EXTRA_CONTENT_ANNOTATIONS -> intent.putExtra(it.key, (it.value as? ArrayList<*>)?.filterIsInstance<String>() as ArrayList<String>)
                             Intent.EXTRA_ORIGINATING_URI -> intent.putExtra(it.key, it.value as Uri)
                             Intent.EXTRA_PROCESS_TEXT, Intent.EXTRA_TEXT, Intent.EXTRA_TITLE -> {
